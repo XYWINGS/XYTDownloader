@@ -1,0 +1,31 @@
+
+
+# # Base image
+# FROM python:3.11-slim
+
+# # Prevent Python from buffering logs
+# ENV PYTHONUNBUFFERED=1
+
+# # Set working directory
+# WORKDIR /app
+
+# # Install system dependencies + ffmpeg
+# RUN apt-get update && \
+#     apt-get install -y ffmpeg ca-certificates && \
+#     rm -rf /var/lib/apt/lists/*
+
+# # Copy Python requirements and app code
+# COPY requirements.txt .
+# COPY app.py .
+
+# # Install Python dependencies
+# RUN pip install --no-cache-dir -r requirements.txt
+
+# # Create downloads directory
+# RUN mkdir -p downloads
+
+# # Expose Flask port
+# EXPOSE 5000
+
+# # Run the Flask app
+# CMD ["python", "app.py"]
